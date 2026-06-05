@@ -3,235 +3,408 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>การ์ดประวัติส่วนตัวนักเรียน</title>
+<title>Student Profile - Music</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-    --primary:#2196f3;
-    --secondary:#64b5f6;
-    --light:#e3f2fd;
-    --dark:#1565c0;
-    --text:#333;
-}
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Segoe UI", Tahoma, sans-serif;
+    font-family:'Kanit',sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#e3f2fd,#bbdefb);
-    padding:30px;
-    color:var(--text);
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top left,#6ec6ff 0%,transparent 25%),
+    radial-gradient(circle at bottom right,#90caf9 0%,transparent 30%),
+    linear-gradient(135deg,#0d47a1,#1976d2,#42a5f5);
+    padding:40px;
 }
 
-.container{
-    max-width:900px;
+.wrapper{
+    max-width:1000px;
     margin:auto;
 }
 
 .card{
-    background:#fff;
-    border-radius:24px;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:35px;
     overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.3),
+    inset 0 0 20px rgba(255,255,255,.2);
 }
 
-.header{
-    background:linear-gradient(135deg,var(--primary),var(--dark));
-    color:white;
+.hero{
+    position:relative;
     text-align:center;
-    padding:40px 20px;
+    padding:60px 30px;
+    color:white;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(255,255,255,.1);
+    border-radius:50%;
+    top:-100px;
+    right:-80px;
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    bottom:-100px;
+    left:-50px;
 }
 
 .avatar{
-    width:130px;
-    height:130px;
+    width:180px;
+    height:180px;
     border-radius:50%;
     background:white;
-    color:var(--primary);
-    font-size:52px;
-    font-weight:bold;
+    margin:auto;
     display:flex;
-    align-items:center;
     justify-content:center;
-    margin:0 auto 15px;
-    border:5px solid rgba(255,255,255,.5);
+    align-items:center;
+    font-size:70px;
+    color:#1976d2;
+    font-weight:700;
+    border:8px solid rgba(255,255,255,.4);
+    box-shadow:
+    0 0 40px rgba(255,255,255,.6);
 }
 
-.header h1{
-    font-size:2rem;
+.hero h1{
+    margin-top:20px;
+    font-size:3rem;
 }
 
 .nickname{
+    font-size:1.3rem;
     opacity:.95;
-    margin-top:6px;
-    font-size:1.1rem;
+}
+
+.school{
+    margin-top:10px;
+    display:inline-block;
+    padding:8px 20px;
+    background:rgba(255,255,255,.2);
+    border-radius:30px;
 }
 
 .content{
-    padding:30px;
+    background:white;
+    padding:40px;
 }
 
 .section{
-    margin-bottom:28px;
+    margin-bottom:35px;
 }
 
-.section-title{
-    color:var(--dark);
-    font-size:1.2rem;
-    font-weight:700;
-    margin-bottom:15px;
-    padding-bottom:8px;
-    border-bottom:3px solid var(--light);
+.title{
+    font-size:1.4rem;
+    color:#1565c0;
+    margin-bottom:20px;
+    border-left:6px solid #2196f3;
+    padding-left:12px;
 }
 
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:12px;
+    gap:15px;
 }
 
-.item{
-    background:#f8fbff;
-    border-left:5px solid var(--primary);
-    padding:12px;
-    border-radius:10px;
+.box{
+    background:#f5fbff;
+    padding:16px;
+    border-radius:18px;
+    transition:.3s;
+    border:2px solid #e3f2fd;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(33,150,243,.2);
 }
 
 .label{
-    font-weight:700;
-    color:var(--dark);
+    font-weight:600;
+    color:#1565c0;
 }
 
-.tags{
+.favorites{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.favorite-card{
+    color:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.food{
+    background:linear-gradient(135deg,#42a5f5,#1976d2);
+}
+
+.color{
+    background:linear-gradient(135deg,#64b5f6,#29b6f6);
+}
+
+.music{
+    background:linear-gradient(135deg,#1e88e5,#0d47a1);
+}
+
+.anime{
+    background:linear-gradient(135deg,#5c6bc0,#3949ab);
+}
+
+.favorite-card h3{
+    font-size:2rem;
+}
+
+.skills{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:12px;
 }
 
-.tag{
-    background:var(--primary);
-    color:white;
-    padding:8px 14px;
+.skill{
+    padding:12px 20px;
     border-radius:999px;
-    font-size:.95rem;
+    color:white;
+    font-weight:500;
+    background:linear-gradient(135deg,#2196f3,#0d47a1);
+    box-shadow:0 6px 15px rgba(33,150,243,.35);
 }
 
 .quote{
-    background:linear-gradient(135deg,#e3f2fd,#f5fbff);
-    border-left:6px solid var(--primary);
-    padding:18px;
-    border-radius:12px;
-    font-style:italic;
+    background:linear-gradient(135deg,#e3f2fd,#ffffff);
+    padding:30px;
+    border-radius:25px;
     text-align:center;
-    font-size:1.05rem;
+    font-size:1.2rem;
+    color:#1565c0;
+    font-style:italic;
+    border:3px dashed #64b5f6;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:linear-gradient(135deg,#2196f3,#1565c0);
+    color:white;
+    text-align:center;
+    padding:20px;
+    border-radius:20px;
+}
+
+.stat h2{
+    font-size:2rem;
 }
 
 .footer{
     text-align:center;
-    color:#666;
-    font-size:.9rem;
-    padding-top:10px;
+    color:#777;
+    margin-top:20px;
+}
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:2rem;
+}
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
 }
 
 @media print{
-    body{
-        background:white;
-        padding:0;
-    }
 
-    .card{
-        box-shadow:none;
-        border:1px solid #ddd;
-    }
-
-    @page{
-        size:A4;
-        margin:12mm;
-    }
+body{
+background:white;
+padding:0;
 }
+
+.card{
+box-shadow:none;
+}
+
+@page{
+size:A4;
+margin:10mm;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="card">
+<div class="wrapper">
 
-        <div class="header">
-            <div class="avatar">ม</div>
-            <h1>เจตพล อินจุ่มใจ๋</h1>
-            <div class="nickname">ชื่อเล่น : มิวสิค</div>
-        </div>
+<div class="card">
 
-        <div class="content">
+<div class="hero">
 
-            <div class="section">
-                <div class="section-title">ข้อมูลส่วนตัว</div>
-                <div class="grid">
-                    <div class="item"><span class="label">วันเกิด:</span> 9 มกราคม 2555</div>
-                    <div class="item"><span class="label">เพศ:</span> ชาย</div>
-                    <div class="item"><span class="label">กรุ๊ปเลือด:</span> O</div>
-                    <div class="item"><span class="label">ราศี:</span> มังกร</div>
-                    <div class="item"><span class="label">ภูมิลำเนา:</span> เชียงใหม่</div>
-                    <div class="item"><span class="label">ส่วนสูง:</span> 175 ซม.</div>
-                </div>
-            </div>
+<div class="avatar">🎵</div>
 
-            <div class="section">
-                <div class="section-title">ข้อมูลการศึกษา</div>
-                <div class="grid">
-                    <div class="item"><span class="label">โรงเรียน:</span> จอมทอง</div>
-                    <div class="item"><span class="label">ระดับชั้น:</span> ม.3</div>
-                    <div class="item"><span class="label">วิชาที่ชอบ:</span> ดนตรี</div>
-                    <div class="item"><span class="label">วิชาที่ยาก:</span> วิยาศาสตร์</div>
-                </div>
-            </div>
+<h1>เจตพล อินจุ่มใจ๋</h1>
 
-            <div class="section">
-                <div class="section-title">ความสนใจและกิจกรรม</div>
-                <div class="grid">
-                    <div class="item"><span class="label">ชมรม/กิจกรรม:</span> วงโยธวาทิต</div>
-                    <div class="item"><span class="label">งานอดิเรก:</span> เล่นดนตรี</div>
-                    <div class="item"><span class="label">กีฬา:</span> ฟุตบอล</div>
-                    <div class="item"><span class="label">เพลงที่ชอบ:</span> สตริง</div>
-                    <div class="item"><span class="label">ซีรีส์/อนิเมะ:</span> One Piece</div>
-                </div>
-            </div>
+<div class="nickname">ชื่อเล่น : มิวสิค</div>
 
-            <div class="section">
-                <div class="section-title">เป้าหมายและความฝัน</div>
-                <div class="grid">
-                    <div class="item"><span class="label">ความฝัน/อาชีพ:</span> นักดนตรี</div>
-                    <div class="item"><span class="label">เพื่อนสนิท:</span> ปิ่นโต</div>
-                    <div class="item"><span class="label">อาหารโปรด:</span> ก๋วยเตี๋ยว</div>
-                    <div class="item"><span class="label">สีโปรด:</span> ฟ้า</div>
-                </div>
-            </div>
+<div class="school">
+🏫 โรงเรียนจอมทอง | ชั้น ม.3
+</div>
 
-            <div class="section">
-                <div class="section-title">ทักษะ</div>
-                <div class="tags">
-                    <span class="tag">🎵 เล่นดนตรี</span>
-                    <span class="tag">🎮 เล่นเกม</span>
-                </div>
-            </div>
+</div>
 
-            <div class="section">
-                <div class="section-title">คติประจำใจ</div>
-                <div class="quote">
-                    "ความพยายามไม่เคยทรยศคนที่ตั้งใจ"
-                </div>
-            </div>
+<div class="content">
 
-            <div class="footer">
-                Student Profile Card • Modern Blue Design
-            </div>
+<div class="section">
 
-        </div>
-    </div>
+<div class="stats">
+
+<div class="stat">
+<h2>175</h2>
+<p>ส่วนสูง</p>
+</div>
+
+<div class="stat">
+<h2>O</h2>
+<p>กรุ๊ปเลือด</p>
+</div>
+
+<div class="stat">
+<h2>♂</h2>
+<p>เพศ</p>
+</div>
+
+<div class="stat">
+<h2>♑</h2>
+<p>ราศีมังกร</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2 class="title">👤 ข้อมูลส่วนตัว</h2>
+
+<div class="grid">
+
+<div class="box"><span class="label">วันเกิด :</span> 9 มกราคม 2555</div>
+<div class="box"><span class="label">ภูมิลำเนา :</span> เชียงใหม่</div>
+<div class="box"><span class="label">เพื่อนสนิท :</span> ปิ่นโต</div>
+<div class="box"><span class="label">ความฝัน :</span> นักดนตรี</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2 class="title">📚 การเรียน</h2>
+
+<div class="grid">
+
+<div class="box">🎼 วิชาที่ชอบ : ดนตรี</div>
+<div class="box">🔬 วิชาที่ยาก : วิทยาศาสตร์</div>
+<div class="box">🥁 ชมรม : วงโยธวาทิต</div>
+<div class="box">⚽ กีฬา : ฟุตบอล</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2 class="title">⭐ สิ่งที่ชอบ</h2>
+
+<div class="favorites">
+
+<div class="favorite-card food">
+🍜
+<h3>ก๋วยเตี๋ยว</h3>
+อาหารโปรด
+</div>
+
+<div class="favorite-card color">
+💙
+<h3>ฟ้า</h3>
+สีโปรด
+</div>
+
+<div class="favorite-card music">
+🎸
+<h3>สตริง</h3>
+เพลงที่ชอบ
+</div>
+
+<div class="favorite-card anime">
+🏴‍☠️
+<h3>One Piece</h3>
+อนิเมะ
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2 class="title">🚀 ทักษะ</h2>
+
+<div class="skills">
+<div class="skill">🎵 เล่นดนตรี</div>
+<div class="skill">🎮 เล่นเกม</div>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2 class="title">💭 คติประจำใจ</h2>
+
+<div class="quote">
+"ความพยายามไม่เคยทรยศคนที่ตั้งใจ"
+</div>
+
+</div>
+
+<div class="footer">
+Student Profile Card • Designed with Blue Modern Theme
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </body>
