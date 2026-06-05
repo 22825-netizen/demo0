@@ -1,112 +1,238 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ประวัติส่วนตัว | เจตพล อินจุ่มใจ๋</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-color: #e63946; /* สีแดงที่ชอบ */
-            --secondary-color: #1d3557;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #2b2d42;
-            --text-muted: #6c757d;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>การ์ดประวัติส่วนตัวนักเรียน</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Sarabun', sans-serif;
-        }
+<style>
+:root{
+    --primary:#2196f3;
+    --secondary:#64b5f6;
+    --light:#e3f2fd;
+    --dark:#1565c0;
+    --text:#333;
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Tahoma, sans-serif;
+}
 
-        .profile-container {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 450px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
+body{
+    background:linear-gradient(135deg,#e3f2fd,#bbdefb);
+    padding:30px;
+    color:var(--text);
+}
 
-        .profile-container:hover {
-            transform: translateY(-5px);
-        }
+.container{
+    max-width:900px;
+    margin:auto;
+}
 
-        /* Header ส่วนหัวที่เป็นสีแดง */
-        .profile-header {
-            background: linear-gradient(135deg, var(--primary-color), #b71c1c);
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
+.card{
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
 
-        .avatar-wrapper {
-            width: 110px;
-            height: 110px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
+.header{
+    background:linear-gradient(135deg,var(--primary),var(--dark));
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
 
-        .avatar-wrapper i {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-        }
+.avatar{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:white;
+    color:var(--primary);
+    font-size:52px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    border:5px solid rgba(255,255,255,.5);
+}
 
-        .profile-header h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
+.header h1{
+    font-size:2rem;
+}
 
-        .profile-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
+.nickname{
+    opacity:.95;
+    margin-top:6px;
+    font-size:1.1rem;
+}
 
-        /* Body ส่วนข้อมูล */
-        .profile-body {
-            padding: 30px 25px;
-        }
+.content{
+    padding:30px;
+}
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #edf2f7;
-        }
+.section{
+    margin-bottom:28px;
+}
 
-        .info-item:last-child {
-            border-bottom: none;
-        }
+.section-title{
+    color:var(--dark);
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:15px;
+    padding-bottom:8px;
+    border-bottom:3px solid var(--light);
+}
 
-        .icon-box {
-            width: 42px;
-            height: 42px;
-            background-color: #ffebee;
-            border-radius
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:12px;
+}
+
+.item{
+    background:#f8fbff;
+    border-left:5px solid var(--primary);
+    padding:12px;
+    border-radius:10px;
+}
+
+.label{
+    font-weight:700;
+    color:var(--dark);
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.tag{
+    background:var(--primary);
+    color:white;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.95rem;
+}
+
+.quote{
+    background:linear-gradient(135deg,#e3f2fd,#f5fbff);
+    border-left:6px solid var(--primary);
+    padding:18px;
+    border-radius:12px;
+    font-style:italic;
+    text-align:center;
+    font-size:1.05rem;
+}
+
+.footer{
+    text-align:center;
+    color:#666;
+    font-size:.9rem;
+    padding-top:10px;
+}
+
+@media print{
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .card{
+        box-shadow:none;
+        border:1px solid #ddd;
+    }
+
+    @page{
+        size:A4;
+        margin:12mm;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <div class="header">
+            <div class="avatar">ม</div>
+            <h1>เจตพล อินจุ่มใจ๋</h1>
+            <div class="nickname">ชื่อเล่น : มิวสิค</div>
+        </div>
+
+        <div class="content">
+
+            <div class="section">
+                <div class="section-title">ข้อมูลส่วนตัว</div>
+                <div class="grid">
+                    <div class="item"><span class="label">วันเกิด:</span> 9 มกราคม 2555</div>
+                    <div class="item"><span class="label">เพศ:</span> ชาย</div>
+                    <div class="item"><span class="label">กรุ๊ปเลือด:</span> O</div>
+                    <div class="item"><span class="label">ราศี:</span> มังกร</div>
+                    <div class="item"><span class="label">ภูมิลำเนา:</span> เชียงใหม่</div>
+                    <div class="item"><span class="label">ส่วนสูง:</span> 175 ซม.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">ข้อมูลการศึกษา</div>
+                <div class="grid">
+                    <div class="item"><span class="label">โรงเรียน:</span> จอมทอง</div>
+                    <div class="item"><span class="label">ระดับชั้น:</span> ม.3</div>
+                    <div class="item"><span class="label">วิชาที่ชอบ:</span> ดนตรี</div>
+                    <div class="item"><span class="label">วิชาที่ยาก:</span> วิยาศาสตร์</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">ความสนใจและกิจกรรม</div>
+                <div class="grid">
+                    <div class="item"><span class="label">ชมรม/กิจกรรม:</span> วงโยธวาทิต</div>
+                    <div class="item"><span class="label">งานอดิเรก:</span> เล่นดนตรี</div>
+                    <div class="item"><span class="label">กีฬา:</span> ฟุตบอล</div>
+                    <div class="item"><span class="label">เพลงที่ชอบ:</span> สตริง</div>
+                    <div class="item"><span class="label">ซีรีส์/อนิเมะ:</span> One Piece</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">เป้าหมายและความฝัน</div>
+                <div class="grid">
+                    <div class="item"><span class="label">ความฝัน/อาชีพ:</span> นักดนตรี</div>
+                    <div class="item"><span class="label">เพื่อนสนิท:</span> ปิ่นโต</div>
+                    <div class="item"><span class="label">อาหารโปรด:</span> ก๋วยเตี๋ยว</div>
+                    <div class="item"><span class="label">สีโปรด:</span> ฟ้า</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">ทักษะ</div>
+                <div class="tags">
+                    <span class="tag">🎵 เล่นดนตรี</span>
+                    <span class="tag">🎮 เล่นเกม</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">คติประจำใจ</div>
+                <div class="quote">
+                    "ความพยายามไม่เคยทรยศคนที่ตั้งใจ"
+                </div>
+            </div>
+
+            <div class="footer">
+                Student Profile Card • Modern Blue Design
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
