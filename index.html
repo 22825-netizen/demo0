@@ -12,7 +12,11 @@ body{min-height:100vh;background:#06101e;display:flex;justify-content:center;ali
 .hero-band{background:#0d1f3c;position:relative;overflow:hidden;}
 .music-bg{position:absolute;inset:0;width:100%;height:100%;opacity:0.07;pointer-events:none;}
 .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:40px 24px 32px;}
-.avatar-ring{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#1a6ee0,#3a9fff);display:flex;align-items:center;justify-content:center;font-size:52px;border:4px solid #3a9fff;box-shadow:0 0 0 8px rgba(58,159,255,0.15);}
+
+/* แก้ไขสไตล์ Avatar Ring ให้รองรับรูปภาพวงกลม */
+.avatar-ring{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#1a6ee0,#3a9fff);display:flex;align-items:center;justify-content:center;border:4px solid #3a9fff;box-shadow:0 0 0 8px rgba(58,159,255,0.15);overflow:hidden;}
+.avatar-ring img{width:100%;height:100%;object-fit:cover;}
+
 .hero-name{color:#fff;font-size:28px;font-weight:700;margin-top:14px;letter-spacing:1px;}
 .hero-nick{color:#7db8ff;font-size:14px;margin-top:2px;}
 .hero-school{background:rgba(58,159,255,0.15);border:1px solid rgba(58,159,255,0.3);color:#a0d0ff;font-size:13px;padding:6px 18px;border-radius:999px;margin-top:10px;}
@@ -57,7 +61,7 @@ body{min-height:100vh;background:#06101e;display:flex;justify-content:center;ali
 </style>
 </head>
 <body>
-<img src="https://pbs.twimg.com/media/G8SaOQ5asAAQ8rP.jpg">
+
 <div class="profile-wrap">
 
   <!-- Hero -->
@@ -84,7 +88,10 @@ body{min-height:100vh;background:#06101e;display:flex;justify-content:center;ali
       <line x1="0" y1="120" x2="600" y2="120" stroke="#fff" stroke-width="0.5"/>
     </svg>
     <div class="hero-inner">
-      <div class="avatar-ring">🎵</div>
+      <!-- จุดที่แก้ไข: ย้ายรูปภาพมาใส่ไว้ที่นี่แทนอีโมจิเดิม -->
+      <div class="avatar-ring">
+        <img src="https://pbs.twimg.com/media/G8SaOQ5asAAQ8rP.jpg" alt="Music Profile">
+      </div>
       <div class="hero-name">เจตพล อินจุ่มใจ๋</div>
       <div class="hero-nick">ชื่อเล่น : มิวสิค</div>
       <div class="hero-school">🏫 โรงเรียนจอมทอง · ชั้น ม.3</div>
